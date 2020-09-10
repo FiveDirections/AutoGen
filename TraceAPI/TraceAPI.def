@@ -1,0 +1,7 @@
+LIBRARY		TraceAPI
+
+VERSION		1.0
+
+EXPORTS
+
+	DetourFinishHelperProcess	@1	NONAME

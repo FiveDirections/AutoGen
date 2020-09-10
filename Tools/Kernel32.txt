@@ -1,0 +1,6 @@
+!
+! Generate Detours for all exports in Kernel32.DLL
+!
+! The relative path names assume AutoGen is run from x64\{Debug | Release}
+
+/v /exp C:\windows\system32\kernel32.dll /out=..\..\TraceAPI /data=..\..\

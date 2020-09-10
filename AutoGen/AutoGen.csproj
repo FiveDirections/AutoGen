@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43F52FC6-7119-43FF-BDB5-BAE2BED0AB70}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AutoGen</RootNamespace>
+    <AssemblyName>AutoGen</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>
+    </NoWarn>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.2-rc1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.7.2.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.7.2\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.StringTemplate, Version=4.0.7.0, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\StringTemplate4.4.0.9-rc1\lib\net40-client\Antlr4.StringTemplate.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.StringTemplate.Visualizer, Version=4.0.7.0, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\StringTemplate4.Visualizer.4.0.9-rc1\lib\net40-client\Antlr4.StringTemplate.Visualizer.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.7.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.7.0\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="PeNet, Version=1.1.1.0, Culture=neutral, PublicKeyToken=6cf2bfba59bcfb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PeNet.1.1.1\lib\net461\PeNet.dll</HintPath>
+    </Reference>
+    <Reference Include="PeNet.Asn1, Version=1.3.3.0, Culture=neutral, PublicKeyToken=1e2e3568f0050bf5, processorArchitecture=MSIL">
+      <HintPath>..\packages\PeNet.Asn1.1.3.3\lib\net461\PeNet.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScrapySharp.3.0.0\lib\netstandard2.0\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScrapySharp.3.0.0\lib\netstandard2.0\ScrapySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.4.6.0\lib\net461\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoGen.cs" />
+    <Compile Include="Code_Gen.cs" />
+    <Compile Include="generated\CLIBaseListener.cs" />
+    <Compile Include="generated\CLILexer.cs" />
+    <Compile Include="generated\CLIListener.cs" />
+    <Compile Include="generated\CLIParser.cs" />
+    <Compile Include="CLI_Parser.cs" />
+    <Compile Include="CPP14_Function_Parser.cs" />
+    <Compile Include="generated\CPP14BaseListener.cs" />
+    <Compile Include="generated\CPP14Lexer.cs" />
+    <Compile Include="generated\CPP14Listener.cs" />
+    <Compile Include="generated\CPP14Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils_DB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="CLI.g4" />
+    <None Include="CPP14.g4" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets'))" />
+  </Target>
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>java.exe org.antlr.v4.Tool $(ProjectDir)CPP14.g4 -o $(ProjectDir)generated\ -Dlanguage=CSharp
+java.exe org.antlr.v4.Tool $(ProjectDir)CLI.g4 -o $(ProjectDir)generated\ -Dlanguage=CSharp</PreBuildEvent>
+  </PropertyGroup>
+</Project>

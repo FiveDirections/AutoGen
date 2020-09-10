@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+This file causes TraceWPP to be run against the source files in the project prior to being
+compiled. This file is imported by the .vcxproj project file (look at the end, in the ExtensionTargets section),
+which should look something like this:
+
+  <ImportGroup Label="ExtensionTargets">
+	<Import Project="$(SolutionDir)\WPP.targets" />
+  </ImportGroup>
+
+-->
+
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+ <PropertyGroup>
+      <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean);*.tmh</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <CoreCppClean Include="@(CoreCppClean);$(ProjectDir)">
+          <FilePatternsToDelete>*.tmh</FilePatternsToDelete>
+     </CoreCppClean>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TraceWppSources Include="@(ClCompile)" Exclude="stdafx.cpp" />
+  </ItemGroup>
+
+  <Target Name="TraceWpp" BeforeTargets="ClCompile" Inputs="@(TraceWppSources)" Outputs="@(TraceWppSources -> '%(Filename).tmh')">
+    <Message Importance="High" Text="Creating TMH files for: @(TraceWppSources, ' '), using $(ProjectDir)..\Global\WPP_Tracing.h"/>
+    <Exec Command="cd &quot;$(ProjectDir)&quot;" />
+    <Exec Command="&quot;$(WDKBinRoot)\$(Platform)\TraceWPP.exe&quot; -dll -scan:&quot;$(ProjectDir)..\Global\WPP_Tracing.h&quot; -cfgdir:&quot;$(WDKBinRoot)\wppconfig\rev1&quot; -odir:&quot;$(IntDir)\&quot; @(TraceWppSources, ' ')" />
+    <Message Importance="High" Text="TMH files created"/>
+  </Target>
+  
+</Project>

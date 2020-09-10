@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<instrumentationManifest xsi:schemaLocation="http://schemas.microsoft.com/win/2004/08/events eventman.xsd" xmlns="http://schemas.microsoft.com/win/2004/08/events" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:trace="http://schemas.microsoft.com/win/2004/08/events/trace">
+	<instrumentation>
+		<events>
+			<provider name="FDI-Detours-Test" guid="{DDC4F858-D5CB-481A-B0A4-80A30BA84033}" symbol="FDI_DETOURS_TEST_PROVIDER" resourceFileName="FDI-Detours.dll" messageFileName="FDI-Detours.dll">
+				<events>
+					<event symbol="evt_dll_load" value="1" version="0" channel="Operational" level="Low_volume" task="Module" opcode="Dll_load" template="Load" keywords="Module " message="$(string.FDI-Detours-Test.event.1.message)"></event>
+					<event symbol="evt_dll_unload" value="2" version="0" channel="Operational" level="Low_volume" task="Module" opcode="Dll_unload" template="Unload" keywords="Module " message="$(string.FDI-Detours-Test.event.2.message)"></event>
+					<event symbol="evt_api_call" value="3" version="0" channel="Operational" level="High_volume" task="Intercept" opcode="Routine_enter" template="Call" keywords="Pre_call " message="$(string.FDI-Detours-Test.event.3.message)"></event>
+					<event symbol="evt_api_return" value="4" version="0" channel="Operational" level="High_volume" task="Intercept" opcode="Routine_exit" template="Return" keywords="Post_call " message="$(string.FDI-Detours-Test.event.4.message)"></event>
+					<event symbol="evt_apc" value="5" version="0" channel="Operational" level="High_volume" task="Intercept" opcode="Completion_apc" template="Apc" keywords="Apc_call " message="$(string.FDI-Detours-Test.event.5.message)"></event>
+					<event symbol="evt_dbg_provider_start" value="6" version="0" channel="Debug" level="Low_volume" task="ETWProvider" opcode="win:Start" template="AStrings4" keywords="Provider " message="$(string.FDI-Detours-Test.event.6.message)"></event>
+					<event symbol="evt_dbg_provider_exit" value="7" version="0" channel="Debug" level="Low_volume" task="ETWProvider" opcode="win:Stop" template="Message_status" keywords="Provider " message="$(string.FDI-Detours-Test.event.7.message)"></event>
+				</events>
+				<levels>
+					<level name="Low_volume" symbol="lvl_low_volume" value="16" message="$(string.FDI-Detours-Test.level._low_volume.message)"></level>
+					<level name="Medium_volume" symbol="lvl_medium_volume" value="17" message="$(string.FDI-Detours-Test.level._medium_volume.message)"></level>
+					<level name="High_volume" symbol="lvl_high_volume" value="18" message="$(string.FDI-Detours-Test.level._high_volume.message)"></level>
+				</levels>
+				<tasks>
+					<task name="Module" symbol="tsk_module" value="1" eventGUID="{20C935E6-532C-4DCE-B19F-82DCEB22D9BF}" message="$(string.FDI-Detours-Test.task._module.message)"></task>
+					<task name="Intercept" symbol="tsk_intercept" value="2" eventGUID="{EC8E8DF3-BDF3-4A9B-9195-7160F0641A73}" message="$(string.FDI-Detours-Test.task._intercept.message)"></task>
+					<task name="ETWProvider" symbol="tsk_provider" value="3" eventGUID="{333E0B20-5200-4068-A611-CEDD26117AA5}" message="$(string.FDI-Detours-Test.task._provider.message)"></task>
+				</tasks>
+				<opcodes>
+					<opcode name="Dll_load" symbol="opc_dll_load" value="10" message="$(string.FDI-Detours-Test.opcode._dll_load.message)"></opcode>
+					<opcode name="Dll_unload" symbol="opc_dll_unload" value="11" message="$(string.FDI-Detours-Test.opcode._dll_unload.message)"></opcode>
+					<opcode name="Routine_enter" symbol="opc_routine_enter" value="12" message="$(string.FDI-Detours-Test.opcode._routine_enter.message)"></opcode>
+					<opcode name="Routine_exit" symbol="opc_routine_exit" value="13" message="$(string.FDI-Detours-Test.opcode._routine_exit.message)"></opcode>
+					<opcode name="Completion_apc" symbol="opc_completion_apc" value="14" message="$(string.FDI-Detours-Test.opcode._completion_apc.message)"></opcode>
+				</opcodes>
+				<channels>
+					<channel name="Operational" chid="Operational" symbol="OPERATIONAL_CHANNEL" type="Operational" enabled="true" message="$(string.FDI-Detours-Test.channel.OPERATIONAL_CHANNEL.message)"></channel>
+					<channel name="Debug" chid="Debug" symbol="DEBUG_CHANNEL" type="Debug" enabled="false" message="$(string.FDI-Detours-Test.channel.DEBUG_CHANNEL.message)"></channel>
+				</channels>
+				<keywords>
+					<keyword name="Module" symbol="kw_module" mask="0x1" message="$(string.FDI-Detours-Test.Keyword._module.message)"></keyword>
+					<keyword name="Pre_call" symbol="kw_pre_call" mask="0x2" message="$(string.FDI-Detours-Test.Keyword._pre_call.message)"></keyword>
+					<keyword name="Post_call" symbol="kw_post_call" mask="0x4" message="$(string.FDI-Detours-Test.Keyword._post_call.message)"></keyword>
+					<keyword name="Apc_call" symbol="kw_apc_call" mask="0x8" message="$(string.FDI-Detours-Test.Keyword._apc_call.message)"></keyword>
+					<keyword name="Provider" symbol="kw_provider" mask="0x10" message="$(string.FDI-Detours-Test.Keyword.Provider.message)"></keyword>
+				</keywords>
+				<templates>
+					<template tid="Load">
+						<data name="Session_guid" inType="win:GUID" outType="xs:GUID"></data>
+						<data name="File_spec" inType="win:UnicodeString" outType="xs:string"></data>
+						<data name="Host_name" inType="win:AnsiString" outType="xs:string"></data>
+						<data name="Version_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Version_blob" inType="win:Binary" outType="xs:hexBinary" count="Version_blob_size" length="1"></data>
+						<data name="File_hash_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="File_hash_blob" inType="win:Binary" outType="xs:hexBinary" count="File_hash_blob_size" length="1"></data>
+						<data name="Exports_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Exports_blob" inType="win:Binary" outType="xs:hexBinary" count="Version_blob_size" length="1"></data>
+					</template>
+					<template tid="Unload">
+						<data name="Session_guid" inType="win:GUID" outType="xs:GUID"></data>
+						<data name="Statistics_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Statistics_blob_" inType="win:Binary" outType="xs:hexBinary" count="Statistics_blob_size" length="1"></data>
+					</template>
+					<template tid="Call">
+						<data name="Session_guid" inType="win:GUID" outType="xs:GUID"></data>
+						<data name="Api_id" inType="win:UInt32" outType="xs:unsignedInt"></data>
+						<data name="Arguments_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Arguments_blob" inType="win:Binary" outType="xs:hexBinary" count="Arguments_blob_size" length="1"></data>
+					</template>
+					<template tid="Return">
+						<data name="Session_guid" inType="win:GUID" outType="xs:GUID"></data>
+						<data name="Api_id" inType="win:UInt32" outType="xs:unsignedInt"></data>
+						<data name="Return_value" inType="win:UInt64" outType="xs:unsignedLong"></data>
+						<data name="Output_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Output_blob" inType="win:Binary" outType="xs:hexBinary" count="Output_blob_size" length="1"></data>
+					</template>
+					<template tid="Apc">
+						<data name="Session_guid" inType="win:GUID" outType="xs:GUID"></data>
+						<data name="Api_id" inType="win:UInt32" outType="xs:unsignedInt"></data>
+						<data name="Parameter_blob_size" inType="win:UInt16" outType="xs:unsignedShort"></data>
+						<data name="Parameter_blob" inType="win:Binary" outType="xs:hexBinary" count="Parameter_blob_size" length="1"></data>
+					</template>
+					<template tid="AStrings4">
+						<data name="Name" inType="win:AnsiString" outType="xs:string"></data>
+						<data name="Version" inType="win:AnsiString" outType="xs:string"></data>
+						<data name="Build_date" inType="win:AnsiString" outType="xs:string"></data>
+						<data name="Build_time" inType="win:AnsiString" outType="xs:string"></data>
+					</template>
+					<template tid="Message_status">
+						<data name="Status" inType="win:UInt32" outType="win:NTSTATUS"></data>
+					</template>
+					<template tid="Message_int">
+						<data name="Int" inType="win:UInt32" outType="xs:unsignedInt"></data>
+					</template>
+					<template tid="Message_hexint">
+						<data name="Int" inType="win:UInt32" outType="win:HexInt32"></data>
+					</template>
+					<template tid="Message_ustring">
+						<data name="String" inType="win:UnicodeString" outType="xs:string"></data>
+					</template>
+					<template tid="Message_hexint64">
+						<data name="Int64" inType="win:UInt64" outType="win:HexInt64"></data>
+					</template>
+				</templates>
+			</provider>
+		</events>
+	</instrumentation>
+	<localization>
+		<resources culture="en-US">
+			<stringTable>
+				<string id="task.None" value="None"></string>
+				<string id="opcode.Stop" value="Stop"></string>
+				<string id="opcode.Start" value="Start"></string>
+				<string id="level.LogAlways" value="Log Always"></string>
+				<string id="FDI-Detours-Test.task._provider.message" value="Provider operations"></string>
+				<string id="FDI-Detours-Test.task._module.message" value="DLL operations, such as load and unload"></string>
+				<string id="FDI-Detours-Test.task._intercept.message" value="Detours call intercepts"></string>
+				<string id="FDI-Detours-Test.opcode._routine_exit.message" value="DLL routine exited"></string>
+				<string id="FDI-Detours-Test.opcode._routine_enter.message" value="DLL routine called"></string>
+				<string id="FDI-Detours-Test.opcode._dll_unload.message" value="DLL unloaded"></string>
+				<string id="FDI-Detours-Test.opcode._dll_load.message" value="DLL loaded"></string>
+				<string id="FDI-Detours-Test.opcode._completion_apc.message" value="Completion callback APC"></string>
+				<string id="FDI-Detours-Test.level._medium_volume.message" value="Medium data volume operations"></string>
+				<string id="FDI-Detours-Test.level._low_volume.message" value="Low data-volume operations"></string>
+				<string id="FDI-Detours-Test.level._high_volume.message" value="High data volume operations"></string>
+				<string id="FDI-Detours-Test.event.7.message" value="Provider exiting with status %1"></string>
+				<string id="FDI-Detours-Test.event.6.message" value="Provider %1 started, version %2, Built %3 %4"></string>
+				<string id="FDI-Detours-Test.event.5.message" value="Session %1, API ID %2, Arguments BLOB size %3"></string>
+				<string id="FDI-Detours-Test.event.4.message" value="Session %1, API ID %2, Return value %3, BLOB size %4"></string>
+				<string id="FDI-Detours-Test.event.3.message" value="Session %1, API ID %2, Arguments BLOB size %3"></string>
+				<string id="FDI-Detours-Test.event.2.message" value="Unloaded DLL for session %1, BLOB size %2"></string>
+				<string id="FDI-Detours-Test.event.1.message" value="Session %1, File %2, Host %3, Version BLOB size %4, Hash BLOB size %6, Exports BLOB size %8"></string>
+				<string id="FDI-Detours-Test.channel.OPERATIONAL_CHANNEL.message" value="Normal operational events"></string>
+				<string id="FDI-Detours-Test.channel.DEBUG_CHANNEL.message" value="Debug and development logging"></string>
+				<string id="FDI-Detours-Test.Keyword._pre_call.message" value="Logging of API call"></string>
+				<string id="FDI-Detours-Test.Keyword._post_call.message" value="Logging of API completion status and output parameters"></string>
+				<string id="FDI-Detours-Test.Keyword._module.message" value="Module operations"></string>
+				<string id="FDI-Detours-Test.Keyword._apc_call.message" value="Logging of APIs that have an APC completion callback routine"></string>
+				<string id="FDI-Detours-Test.Keyword.Provider.message" value="Provider debugging"></string>
+			</stringTable>
+		</resources>
+	</localization>
+</instrumentationManifest>

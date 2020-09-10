@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TraceView>
+  <Project>
+    <Session Name="TraceView_061CA65A" Guid="77941B71-3BC8-11EA-BE91-5CF3707D984C" Mode="Realtime" Active="true">
+      <Providers>
+        <Provider Name="DivergenceTraceGuid" Guid="DCDE5106-86EE-47F2-966A-B6C425ACD9F9" Enabled="true" Flags="0xFFFFFFFF" Level="255"/>
+        <Provider Name="FDI Divergence Trace" Guid="FD06D490-ED39-4CFF-BE10-82C940BCBE74" Enabled="true" Flags="0xFFFFFFFF" Level="255"/>
+      </Providers>
+    </Session>
+    <Filters/>
+  </Project>
+</TraceView>
